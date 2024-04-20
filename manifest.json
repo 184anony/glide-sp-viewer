@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "User Agent Switcher for Glide",
+    "version": "1.0",
+    "description": "Change the user agent to mobile on specific sites.",
+    "permissions": ["webRequest", "webRequestBlocking", "*://*.glide.page/*"],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
