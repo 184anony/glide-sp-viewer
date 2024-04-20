@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Glide SP Viewer",
     "version": "1.0",
-    "description": "Change user agent, viewport size, and window size for specific sites.",
+    "description": "glide.pageを開く際に、自動でsp仕様に切り替えます。ご要望は、いやよ(@iyayo.mitsui)まで。",
     "permissions": [
         "webRequest",
         "webRequestBlocking",
@@ -20,5 +20,10 @@
             "js": ["content.js"],
             "run_at": "document_start"
         }
-    ]
+    ],
+    "icons": {
+        "16": "images/icon.png",
+        "48": "images/icon.png",
+        "128": "images/icon.png"
+    }
 }
