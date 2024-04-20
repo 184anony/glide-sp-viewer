@@ -2,8 +2,14 @@
     "manifest_version": 2,
     "name": "Glide SP Viewer",
     "version": "1.0",
-    "description": "Change user agent and viewport size for specific sites.",
-    "permissions": ["webRequest", "webRequestBlocking", "<all_urls>"],
+    "description": "Change user agent, viewport size, and window size for specific sites.",
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "<all_urls>",
+        "tabs",
+        "windows"
+    ],
     "background": {
         "scripts": ["background.js"]
     },

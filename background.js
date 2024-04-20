@@ -12,3 +12,11 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
     { urls: ["*://*.glide.page/*"] },
     ["blocking", "requestHeaders"]
 );
+
+chrome.windows.getCurrent({}, function (window) {
+    var updateInfo = {
+        width: 375,
+        height: 667,
+    };
+    chrome.windows.update(window.id, updateInfo);
+});
