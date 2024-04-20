@@ -1,11 +1,17 @@
 {
-    "manifest_version": 3,
-    "name": "User Agent Switcher for Glide",
+    "manifest_version": 2,
+    "name": "Glide SP Viewer",
     "version": "1.0",
-    "description": "Change the user agent to mobile on specific sites.",
-    "permissions": ["webRequest"],
-    "host_permissions": ["*://*.glide.page/*"],
+    "description": "Change user agent and viewport size for specific sites.",
+    "permissions": ["webRequest", "webRequestBlocking", "<all_urls>"],
     "background": {
-        "service_worker": "background.js"
-    }
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://*.glide.page/*"],
+            "js": ["content.js"],
+            "run_at": "document_start"
+        }
+    ]
 }
