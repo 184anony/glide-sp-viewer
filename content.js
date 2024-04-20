@@ -3,4 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     metaTag.name = "viewport";
     metaTag.content = "width=375, initial-scale=1.0, user-scalable=no";
     document.getElementsByTagName("head")[0].appendChild(metaTag);
+
+    chrome.runtime.sendMessage({ action: "resizeWindow" });
 });

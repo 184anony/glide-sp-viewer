@@ -13,10 +13,28 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
     ["blocking", "requestHeaders"]
 );
 
-chrome.windows.getCurrent({}, function (window) {
-    var updateInfo = {
-        width: 375,
-        height: 667,
-    };
-    chrome.windows.update(window.id, updateInfo);
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+    if (message.action === "resizeWindow") {
+        chrome.windows.getCurrent({}, function (currentWindow) {
+            chrome.system.display.getInfo(function (displays) {
+                const display =
+                    displays.find(
+                        (d) =>
+                            d.bounds.left <= currentWindow.left &&
+                            d.bounds.top <= currentWindow.top &&
+                            currentWindow.left <
+                                d.bounds.left + d.bounds.width &&
+                            currentWindow.top < d.bounds.top + d.bounds.height
+                    ) || displays[0];
+
+                var updateInfo = {
+                    left: display.workArea.left,
+                    top: display.workArea.top,
+                    width: 375,
+                    height: display.workArea.height,
+                };
+                chrome.windows.update(currentWindow.id, updateInfo);
+            });
+        });
+    }
 });
